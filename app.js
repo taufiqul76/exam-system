@@ -140,8 +140,7 @@ function startExam() {
   CURRENT_QUESTIONS = ALL_CHAPTERS[ch];
   student = {
     name: name,
-    roll: $('inputRoll').value.trim(),
-    cls: $('inputClass').value.trim()
+   
   };
 
   answers = {};
