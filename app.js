@@ -140,8 +140,11 @@ function startExam() {
   CURRENT_QUESTIONS = ALL_CHAPTERS[ch];
   student = {
     name: name,
-   
-  };
+   student = {
+  name: name,
+  roll: '',
+  cls: ''
+};
 
   answers = {};
   submitted = false;
