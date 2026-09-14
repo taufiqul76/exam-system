@@ -148,7 +148,7 @@ student = {
   examStarted = true;
   timeLeft = EXAM_CONFIG.durationMinutes * 60;
 
-  $('hdrName').textContent = '👤 ' + student.name + (student.roll ? ' • রোল: ' + student.roll : '');
+ $('hdrName').textContent = '👤 ' + student.name;
   $('hdrExam').textContent = ch + ' — ' + CURRENT_QUESTIONS.length + 'টি প্রশ্ন';
 
   renderQuestions();
