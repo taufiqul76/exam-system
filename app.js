@@ -7,7 +7,7 @@ const API_URL = "https://script.google.com/macros/s/AKfycbzonbCEglo8X1dtTXaUGWgq
    সাধারণ সেটিংস
    ===================================================== */
 const EXAM_CONFIG = {
-  durationMinutes: 45,
+  durationMinutes: 30,
   passMark: 20,
   adminPassword: "1234"
 };
