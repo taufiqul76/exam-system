@@ -138,14 +138,11 @@ function startExam() {
 
   CURRENT_CHAPTER = ch;
   CURRENT_QUESTIONS = ALL_CHAPTERS[ch];
-  student = {
-    name: name,
-   student = {
+student = {
   name: name,
   roll: '',
   cls: ''
 };
-
   answers = {};
   submitted = false;
   examStarted = true;
