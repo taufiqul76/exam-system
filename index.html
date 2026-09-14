@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অনলাইন পরীক্ষা</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ১) শুরুর স্ক্রিন ============ -->
+<div id="screen-start" class="screen active">
+  <div class="start-card">
+    <div class="brand">
+      <div class="logo">📝</div>
+      <h1>অনলাইন পরীক্ষা</h1>
+      <p>নিচের তথ্য পূরণ করে পরীক্ষা শুরু করুন</p>
+    </div>
+
+    <div id="loadingBox" class="loading">⏳ প্রশ্ন লোড হচ্ছে...</div>
+
+    <div id="startForm" style="display:none;">
+      <div class="info-grid">
+        <div class="info-box"><span>মোট প্রশ্ন</span><strong id="infoQ">-</strong></div>
+        <div class="info-box"><span>পূর্ণমান</span><strong id="infoMarks">-</strong></div>
+        <div class="info-box"><span>সময়</span><strong id="infoTime">-</strong></div>
+        <div class="info-box"><span>পাস নম্বর</span><strong id="infoPass">-</strong></div>
+      </div>
+
+      <div class="field">
+        <label for="chapterSelect">📚 অধ্যায় নির্বাচন করুন <b>*</b></label>
+        <select id="chapterSelect"></select>
+      </div>
+
+      <div class="field">
+        <label for="inputName">পরীক্ষার্থীর নাম <b>*</b></label>
+        <input id="inputName" type="text" placeholder="আপনার পূর্ণ নাম লিখুন" autocomplete="off">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="inputRoll">রোল / আইডি</label>
+          <input id="inputRoll" type="text" placeholder="রোল নম্বর" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="inputClass">শ্রেণি / ব্যাচ</label>
+          <input id="inputClass" type="text" placeholder="যেমন: ৮ম শ্রেণি" autocomplete="off">
+        </div>
+      </div>
+
+      <p class="err" id="startError"></p>
+      <button class="btn primary big" id="btnStart">🚀 পরীক্ষা শুরু করুন</button>
+      <p class="hint">⏱ সময় শেষ হলে পরীক্ষা স্বয়ংক্রিয়ভাবে জমা হবে।</p>
+      <p class="hint"><a href="#" id="adminLink">🔒 শিক্ষক/অ্যাডমিন প্যানেল</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ২) পরীক্ষার স্ক্রিন ============ -->
+<div id="screen-exam" class="screen">
+  <header class="exam-header">
+    <div class="eh-left">
+      <div class="eh-name" id="hdrName"></div>
+      <div class="eh-sub" id="hdrExam"></div>
+    </div>
+    <div class="timer" id="timer">০০:০০</div>
+  </header>
+
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <main class="exam-body" id="questionList"></main>
+
+  <footer class="exam-footer">
+    <div class="answered-count" id="answeredCount">উত্তর দেওয়া হয়েছে: ০ / ০</div>
+    <button class="btn primary" id="btnSubmit">পরীক্ষা জমা দিন</button>
+  </footer>
+</div>
+
+<!-- ============ ৩) ফলাফলের স্ক্রিন ============ -->
+<div id="screen-result" class="screen">
+  <div class="result-card">
+    <div class="score-circle" id="scoreCircle"><span id="scoreText">০</span></div>
+    <h2 id="resultTitle"></h2>
+    <p id="resultSub"></p>
+    <div class="result-stats" id="resultStats"></div>
+    <div class="result-actions">
+      <button class="btn primary" id="btnPdf">📄 রেজাল্ট PDF ডাউনলোড</button>
+      <button class="btn ghost" id="btnRetry">🔄 আবার পরীক্ষা দিন</button>
+    </div>
+  </div>
+
+  <div class="review-wrap" id="reviewWrap"></div>
+  <div id="pdfContent" style="position:fixed;left:-99999px;top:0;width:800px;background:#fff;padding:20px;"></div>
+</div>
+
+<!-- ============ ৪) অ্যাডমিন প্যানেল ============ -->
+<div id="screen-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-header">
+      <h2>🔒 অ্যাডমিন প্যানেল — পরীক্ষার্থীদের ফলাফল</h2>
+      <div>
+        <button class="btn ghost" id="btnAdminRefresh">🔄 রিফ্রেশ</button>
+        <button class="btn ghost" id="btnAdminExport">📥 CSV এক্সপোর্ট</button>
+        <button class="btn ghost" id="btnAdminBack">← ফিরে যান</button>
+      </div>
+    </div>
+    <div class="admin-body" id="adminBody"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
